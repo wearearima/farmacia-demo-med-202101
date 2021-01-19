@@ -54,4 +54,12 @@ public class Medicamento {
         }
         return false;
     }
+
+    public boolean tieneStockSuficiente(int unidadesRequeridas) {
+        return unidadesRequeridas <= unidadesStock;
+    }
+
+    public void disminuirStock(int unidades) {
+        unidadesStock -= unidades;
+    }
 }
