@@ -3,6 +3,7 @@ package eu.arima.mejorarTesting.farmacia.reservas;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.matchers.MatchType;
@@ -32,6 +33,7 @@ import static org.mockserver.model.JsonBody.json;
 @Transactional
 @SpringBootTest
 @Testcontainers
+@Tag("testIntegracion")
 class PedidosAlmacenServiceTest {
 
     @Container
