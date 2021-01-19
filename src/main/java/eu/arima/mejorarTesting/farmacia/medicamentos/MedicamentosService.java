@@ -19,4 +19,9 @@ public class MedicamentosService {
         return medicamento;
     }
 
+    public void actualizarStock(long idMedicamento, int unidadesStock) {
+        Medicamento medicamento = medicamentosRepository.findById(idMedicamento).orElseThrow();
+        medicamento.setUnidadesStock(unidadesStock);
+        medicamentosRepository.save(medicamento);
+    }
 }
