@@ -113,7 +113,7 @@ class PedidosAlmacenServiceTest {
                 .withBody(json("{" +
                                "\"idFarmacia\": 44, " +
                                "\"idMedicamento\": " + idMedicamento + ", " +
-                               "\"unidades\": " + unidades +
+                               "\"unidadesReservar\": " + unidades +
                                "}",
                         MatchType.STRICT
                 ));
