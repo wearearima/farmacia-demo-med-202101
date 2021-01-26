@@ -1,7 +1,9 @@
 package eu.arima.mejorarTesting.farmacia.medicamentos;
 
+import eu.arima.mejorarTesting.farmacia.UnitTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -13,7 +15,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@ExtendWith({MockitoExtension.class})
+@UnitTest
 class MedicamentosServiceTest {
 
     public static final long ID_MEDICAMENTO = 1L;

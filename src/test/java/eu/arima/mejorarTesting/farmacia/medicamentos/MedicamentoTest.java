@@ -1,21 +1,26 @@
 package eu.arima.mejorarTesting.farmacia.medicamentos;
 
-import org.apache.tomcat.jni.Local;
+import eu.arima.mejorarTesting.farmacia.UnitTest;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.MockedStatic;
 
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mockStatic;
 
+@UnitTest
 class MedicamentoTest {
 
-    public static final LocalDate HOY = LocalDate.of(2021, 1, 21);
+    public static final LocalDate HOY = LocalDate.now();
 
     @ParameterizedTest( name = "El día {0} el medicamento no está caducado")
     @DisplayName("Si la fecha de caducidad del medicamento es posterior a hoy, el medicamento no está caducado")
@@ -48,9 +53,13 @@ class MedicamentoTest {
     @Test
     @DisplayName("Si la fecha de caducidad del medicamento es hoy, el medicamento no está caducado")
     void estaCaducado_si_fechaCaducidad_hoy_false() {
-        Medicamento medicamento = new Medicamento();
-        medicamento.setFechaCaducidad(HOY);
-        assertFalse(medicamento.estaCaducado());
+        try (MockedStatic<LocalDate> localDateMockStatic = mockStatic(LocalDate.class)) {
+            LocalDate hoy = LocalDate.of(2021,1,21);
+            localDateMockStatic.when(LocalDate::now).thenReturn(hoy);
+            Medicamento medicamento = new Medicamento();
+            medicamento.setFechaCaducidad(hoy);
+            assertFalse(medicamento.estaCaducado());
+        }
     }
 
     @Test

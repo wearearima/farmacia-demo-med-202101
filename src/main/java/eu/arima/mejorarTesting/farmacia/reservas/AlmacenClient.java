@@ -28,7 +28,7 @@ public class AlmacenClient {
         Map<String, Object> data = new HashMap<>() {{
             put("idFarmacia", ID_FARMACIA);
             put("idMedicamento", idMedicamento);
-            put("unidades", unidades);
+            put("unidadesReservar", unidades);
         }};
         return almacenWebClient.post().uri(RESERVAR_MEDICAMENTO_PATH)
                                                                       .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
